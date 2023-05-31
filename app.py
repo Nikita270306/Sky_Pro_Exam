@@ -6,6 +6,10 @@ from views.notes import note_ns
 
 
 def create_app(config: Config) -> Flask:
+    """
+    :param config: Принимает класс Config
+    :return: Экземпляр класса Flask
+    """
     application = Flask(__name__)
     application.config.from_object(config)
     application.app_context().push()

@@ -2,7 +2,26 @@ from dao.models.notes import Notes
 
 
 class NotesDAO:
+    """
+    NotesDAO - класс для работы с данными из БД
 
+    __init__(self, session) - конструктор класса
+        session - сессия для работы с БД
+
+    get_one(self, nid) - получение заметки из БД по id
+        nid - id заметки
+
+    get_all(self) - получение всех заметок из БД
+
+    create(self, data) - создание заметки в БД
+        data - данные для создания заметки
+
+    update(self, note) - обновление данных заметки в БД
+        note - объект заметки
+
+    delete(self, nid) - удаление заметки из БД
+        nid - id заметки
+    """
     def __init__(self, session):
         self.session = session
 

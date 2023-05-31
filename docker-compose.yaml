@@ -14,9 +14,9 @@ services:
   pg:
     image: postgres:latest
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: db
+      POSTGRES_USER: examen
+      POSTGRES_PASSWORD: examen_password
+      POSTGRES_DB: examen
     volumes:
       - ./pg_data:/var/lib/postgresql/data
     healthcheck:
