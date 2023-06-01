@@ -16,7 +16,7 @@ services:
     environment:
       POSTGRES_USER: examen
       POSTGRES_PASSWORD: examen_password
-      POSTGRES_DB: examen
+      POSTGRES_DB: examen_db
     volumes:
       - ./pg_data:/var/lib/postgresql/data
     healthcheck:
