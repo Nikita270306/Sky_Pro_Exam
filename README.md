@@ -42,9 +42,9 @@ Werkzeug==2.3.4
 
 ---
 
-1) Copy this project on your local machine `git clone ссылка на мой гитхаб`
+1) Copy this project on your local machine `git clone https://github.com/Nikita270306/Sky_Pro_Exam.git`
 2) Write in a terminal this command `docker-compose up --build -d`
-3) Open an application, which can send **GET/POST/PUT/PATCH/DELETE** methods, f.e `Postman` and write in the browse page this address `http://localhost/`
+3) Open an application, which can send **GET/POST/PUT/PATCH/DELETE** methods, f.e `Postman` and write in the browse page this address `http://localhost/schedule`
 4) Write your request and push "SEND" button
 5) Receive a response in `JSON` format from the application
 
@@ -52,48 +52,58 @@ Werkzeug==2.3.4
 
 ### Examples:
 
-#### Request: GET http://localhost/notes
+#### Request: GET http://localhost/schedule
 
 #### Response:
 
 ```json
 [
     {
-        "id": 1, 
-        "name": "Note 1", 
-        "text": "Hello world!"
+        "cabinet": 403,
+        "id": 1,
+        "teacher": "Gosha",
+        "date": "2023:06:02:10:30:00",
+        "lesson": "Programming"
     }, 
     {
-        "id": 2, 
-        "name": "Note 2", 
-        "text": "Code your way to success"
+        "cabinet": 404,
+        "id": 2,
+        "teacher": "Ivan",
+        "date": "2023:06:02:12:00:00",
+        "lesson": "Math"
     }, 
     {
-        "id": 3, 
-        "name": "Note 3", 
-        "text": "Test"
+        "cabinet": 403,
+        "id": 3,
+        "teacher": "Zhenya",
+        "date": "2023:06:02:15:00:00",
+        "lesson": "Psychology"
     }
 ]
 ```
 
-#### Request: GET http://localhost/notes/2
+#### Request: GET http://localhost/schedule/2
 
 #### Response:
 
 ```json
 {
-    "id": 2, 
-    "name": "Note 2", 
-    "text": "Code your way to success"
-}
+        "cabinet": 404,
+        "id": 2,
+        "teacher": "Ivan",
+        "date": "2023:06:02:12:00:00",
+        "lesson": "Math"
+    }
 ```
 
-#### Request: POST http://localhost/notes
+#### Request: POST http://localhost/schedule
 
 ```json
 {
-    "name": "Note 4", 
-    "text": "New note"
+    "lesson": "test-lesson",
+    "date": "test-date",
+    "teacher": "test-teacher",
+    "cabinet": "666"
 }
 ```
 
@@ -101,18 +111,22 @@ Werkzeug==2.3.4
 
 ```json
 {
+    "cabinet": 666,
     "id": 4,
-    "name": "Note 4", 
-    "text": "New note"
+    "teacher": "test-teacher",
+    "date": "test-date",
+    "lesson": "test-lesson"
 }
 ```
 
-#### Request: PUT http://localhost/notes/3
+#### Request: PUT http://localhost/schedule/3
 
 ```json
 {
-    "name": "Updated note", 
-    "text": "Updated text"
+    "lesson": "updated-lesson",
+    "date": "updated-date",
+    "teacher": "updated-teacher",
+    "cabinet": "555"
 }
 ```
 
@@ -120,18 +134,41 @@ Werkzeug==2.3.4
 
 ```json
 {
-    "id": 3,
-    "name": "Updated note", 
-    "text": "Updated text"
+    "cabinet": 555,
+    "id": 1,
+    "teacher": "updated-teacher",
+    "date": "updated-date",
+    "lesson": "updated-lesson"
 }
 ```
 
-#### Request: DELETE http://localhost/notes/2
+#### Request: PATCH http://localhost/schedule/3
+
+```json
+{
+    "lesson": "updated-lesson",
+    "date": "updated-date"
+}
+```
+
+#### Response: 
+
+```json
+{
+    "cabinet": 403,
+    "id": 3,
+    "teacher": "Ivan",
+    "date": "updated-date",
+    "lesson": "updated-lesson"
+}
+```
+
+#### Request: DELETE http://localhost/schedule/2
 
 #### Response:
 
 ```json
 {
-    "message": "Note has deleted successfully"
+    "message": "lesson has deleted successfully"
 }
 ```
